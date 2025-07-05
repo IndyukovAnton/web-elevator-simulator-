@@ -1,0 +1,79 @@
+.elevator {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 400px;
+	height: 800px;
+	border: 1px solid #000;
+}
+
+.stage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.stage:not(:last-child) {
+	border-bottom: 1px solid #000;
+}
+
+.stage.active {
+	background-color: red;
+}
+
+.stage::before {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	content: "stage: " attr(stage);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.stage.active::before {
+	color: #fff;
+}
+
+.elevator-panel {
+}
+
+.elevator-panel__display {
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #000;
+	background-color: #4e746b;
+	font-size: 80px;
+}
+
+.elevator-panel__display span {
+	font-family: "Bitcount Grid Double", system-ui;
+	opacity: 0.7;
+	font-weight: 200;
+	line-height: 120%;
+	color: #ffffff;
+	position: relative;
+	top: 5px;
+}
+
+.elevator-panel__buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 200px);
+	grid-auto-rows: 200px;
+	align-items: center;
+	justify-items: center;
+	background: linear-gradient(to right, rgba(210, 210, 210, 0.7) -50%, rgba(110, 110, 110, 0.9) 150%);
+}
+
+.elevator-panel__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0.5px solid #000;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	background-color: #dedede;
+}

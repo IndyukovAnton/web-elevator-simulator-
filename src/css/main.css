@@ -1,0 +1,17 @@
+@import url('./normalize.css');
+@import url('./elevator.css');
+
+body {
+	padding: 100px 0;
+}
+
+.container {
+	max-width: 1440px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	display: flex;
+	column-gap: 100px;
+}
