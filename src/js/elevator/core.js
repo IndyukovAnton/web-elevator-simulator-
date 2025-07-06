@@ -24,21 +24,17 @@ export default class ElevatorCore {
 		}
 	}
 
-	moveToStage() {
-		console.log("Queue start: ", this.panel.queue)
-
-
-		console.log(this.panel.queue)
-		
+	moveToStage() {		
 		if (this.isBusy) { return }
 
 		const indexFirstStageOfQueue = 0
 		const targetStage = this.panel.queue[indexFirstStageOfQueue]
+		const direction = this.checkVectorMoving(this.currentStage, targetStage)
 		this.isBusy = true
 
 		const resSucces = (isFinished)=> {
 			this.currentStage = isFinished.currentStage
-			this.panel.updateDisplay(this.currentStage)
+			this.panel.updateDisplay(this.currentStage, direction)
 		}
 
 		const resError = (err)=> {
@@ -50,7 +46,8 @@ export default class ElevatorCore {
 		let moveInterval = setInterval(()=> {
 			console.log('MOVING')
 
-			const res = this.elevator.changeStage(targetStage, this.checkVectorMoving(this.currentStage, targetStage))
+			const direction = this.checkVectorMoving(this.currentStage, targetStage)
+			const res = this.elevator.changeStage(targetStage, direction)
 
 			res.then(resSucces, resError).then(()=> {
 				if (this.elevator.checkStage(this.currentStage, targetStage) && moveInterval) {
@@ -70,7 +67,7 @@ export default class ElevatorCore {
 	}
 
 	init() {
-		this.panel.queueMax = this.elevator.stages.length / 2
+		this.panel.queueMax = this.elevator.stages.length
 		this.panel.init()
 
 		this.elevator.init(this.currentStage)

@@ -17,7 +17,7 @@ export default class ElevatorPanel {
 			button.onclick = ()=> {
 				button.classList.add('active')
 				const stageId = Number(button.getAttribute('panel-button'))
-				this.addToQueue(stageId) 
+				this.addToQueue(stageId)
 			}
 		});
 	}
@@ -25,14 +25,15 @@ export default class ElevatorPanel {
 	addToQueue(stage) {
 		if (this.queue.length == this.queueMax) { return }
 
-		if (stage in this.queue) { return }
-
-		this.queue.push(stage)
+		if (!this.queue.includes(stage)) {
+			this.queue.push(stage)
+		}
 	}
 
-	updateDisplay(stageNumber = null) {
+	updateDisplay(stageNumber = null, direction) {
 		if (stageNumber === null) { return }
 
-		this.display.querySelector('span').textContent = stageNumber
+		this.display.querySelector('.stage-number').textContent = stageNumber
+		this.display.querySelector('.direction').textContent = direction.symbol
 	}
 }

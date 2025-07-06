@@ -1,15 +1,18 @@
 const State = {
 	DOWN: {
 		code: -1,
-		title: 'DOWN'
+		title: 'DOWN',
+		symbol: "↓"
 	},
 	STOP: {
 		code: 0,
-		title: 'STOP'
+		title: 'STOP',
+		symbol: "-"
 	},
 	UP: {
 		code: 1,
-		title: 'UP'
+		title: 'UP',
+		symbol: "↑"
 	}
 }
 
