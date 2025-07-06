@@ -15,6 +15,7 @@ export default class ElevatorPanel {
 	bindButtons() {
 		this.buttons.forEach(button => {
 			button.onclick = ()=> {
+				button.classList.add('active')
 				const stageId = Number(button.getAttribute('panel-button'))
 				this.addToQueue(stageId) 
 			}

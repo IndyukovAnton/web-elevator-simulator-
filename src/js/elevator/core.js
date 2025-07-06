@@ -56,6 +56,10 @@ export default class ElevatorCore {
 				if (this.elevator.checkStage(this.currentStage, targetStage) && moveInterval) {
 					this.panel.queue.splice(indexFirstStageOfQueue, 1)
 					moveInterval = clearInterval(moveInterval)
+					setTimeout(()=>{
+						const currentActiveButton = document.querySelector(`[panel-button="${this.currentStage}"]`)
+						currentActiveButton.classList.remove('active')
+					}, 500)
 					this.isBusy = false
 				}
 			})
