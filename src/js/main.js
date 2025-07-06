@@ -1,4 +1,4 @@
-import initElevator from './elevator.js'
+import initElevator from './elevator/init.js'
 
 document.addEventListener('DOMContentLoaded', ()=> {
 	initElevator()
